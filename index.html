@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pawsome Pet Sitting</title>
+<meta name="description" content="Pawsome Pet Sitting – Because your pet deserves pawsome care!">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#7b10a6; --teal-dark:#011e5b; --sun:#f0478c; --coral:#f0478c;
+    --ink:#011e5b; --muted:#4a4f6b; --bg:#fdfbff; --card:#ffffff; --soft:#f3e8ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  h1,h2,h3{font-family:'Baloo 2',cursive;line-height:1.15}
+  a{color:inherit}
+  .wrap{max-width:1050px;margin:0 auto;padding:0 20px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:10;background:rgba(253,251,255,.92);backdrop-filter:blur(8px);border-bottom:2px solid #f3e8ff}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Baloo 2';font-weight:800;font-size:1.35rem;color:var(--teal-dark);text-decoration:none}
+  .brand img{height:44px;width:auto}
+  .links{display:flex;gap:22px}
+  .links a{text-decoration:none;font-weight:700;color:var(--muted)}
+  .links a:hover{color:var(--teal-dark)}
+  @media (max-width:640px){.links{display:none}}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,#f3e8ff 0%,#fde7f1 100%);padding:70px 0 90px;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);color:var(--teal-dark)}
+  .hero h1 span{color:var(--teal)}
+  .hero p{font-size:1.2rem;color:var(--muted);margin:16px 0 28px}
+  .btn{display:inline-block;background:var(--coral);color:#fff;font-weight:800;padding:14px 28px;border-radius:999px;text-decoration:none;box-shadow:0 6px 0 #b8226a;transition:transform .15s}
+  .btn:hover{transform:translateY(-3px)}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art img{width:min(400px,85vw);height:auto;filter:drop-shadow(0 12px 24px rgba(123,16,166,.18));animation:bob 3s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  .paws{position:absolute;inset:0;pointer-events:none;opacity:.12;font-size:2rem}
+  @media (max-width:760px){.hero .wrap{grid-template-columns:1fr;text-align:center}}
+
+  section{padding:70px 0}
+  .title{text-align:center;margin-bottom:40px}
+  .title h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--teal-dark)}
+  .title p{color:var(--muted);font-size:1.1rem}
+
+  /* SERVICES */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+  .card{background:var(--card);border-radius:22px;padding:28px 22px;text-align:center;box-shadow:0 8px 24px rgba(123,16,166,.10);border:2px solid #f3e8ff;transition:transform .2s}
+  .card:hover{transform:translateY(-6px) rotate(-1deg)}
+  .card .ico{font-size:2.8rem}
+  .card h3{font-size:1.4rem;margin:8px 0;color:var(--ink)}
+  .card p{color:var(--muted)}
+
+  /* PUP-DATES */
+  .pupdate{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);color:#fff}
+  .pupdate .title h2,.pupdate .title p{color:#fff}
+  .pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .pd-card{background:#fff;color:var(--ink);border-radius:20px;padding:26px;transform:rotate(-2deg);box-shadow:0 14px 30px rgba(0,0,0,.18);border-top:10px solid var(--sun)}
+  .pd-card h3{color:var(--teal);font-size:1.6rem}
+  .pd-card .photo{background:var(--soft);border-radius:14px;height:150px;display:flex;align-items:center;justify-content:center;font-size:4rem;margin:12px 0}
+  .pd-card ul{list-style:none}
+  .pd-card li{padding:4px 0}
+  .pd-text p{font-size:1.15rem;margin-bottom:14px}
+  @media (max-width:760px){.pd-grid{grid-template-columns:1fr}}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .about p{font-size:1.1rem;color:var(--muted);margin-bottom:14px}
+  .owners{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .owner{background:#fff;border-radius:20px;padding:22px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .owner .av{width:84px;height:84px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+  .owner h3{font-size:1.3rem}
+  .owner span{color:var(--muted);font-size:.95rem}
+  @media (max-width:760px){.about{grid-template-columns:1fr}}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(160deg,#f3e8ff,#fde7f1);text-align:center;border-radius:30px;padding:50px 24px}
+  .contact h2{font-size:clamp(2rem,4vw,2.6rem);color:var(--teal-dark)}
+  .contact p{color:var(--muted);font-size:1.15rem;margin:10px 0 24px}
+
+  footer{text-align:center;padding:30px 20px;color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="logo-icon.png" alt="Pawsome Pet Sitting logo"> Pawsome</a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#pupdates">Pup-dates</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Pawsome <span>Pet Sitting</span></h1>
+      <p>Because your pet deserves <strong>pawsome</strong> care! We feed, walk, play with, and love your furry family while you're away.</p>
+      <a class="btn" href="#contact">Book a Visit 🐾</a>
+    </div>
+    <div class="hero-art">
+      <img src="logo-full.png" alt="Pawsome Petsitting logo with a dog and cat inside a heart">
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="title">
+      <h2>Our Services</h2>
+      <p>Everything your pet needs while you're away</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ico">🥣</div><h3>Feeding</h3><p>Fresh food and water on schedule, just the way your pet likes it.</p></div>
+      <div class="card"><div class="ico">🦮</div><h3>Dog Walks</h3><p>Fun, safe walks around the neighborhood to burn off energy.</p></div>
+      <div class="card"><div class="ico">🎾</div><h3>Playtime & Cuddles</h3><p>Games, belly rubs, and lots of love so your pet never feels lonely.</p></div>
+      <div class="card"><div class="ico">🧹</div><h3>Clean-Up</h3><p>Litter boxes and cages cleaned so your home stays fresh.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pupdate" id="pupdates">
+  <div class="wrap">
+    <div class="title">
+      <h2>✨ Pawsome Pup-dates ✨</h2>
+      <p>What makes us different</p>
+    </div>
+    <div class="pd-grid">
+      <div class="pd-text">
+        <p>After every visit, you get a <strong>Pup-date Card</strong> with a photo and a note about your pet's day.</p>
+        <p>No more wondering if your pet is okay. You'll know exactly how they're doing, every single time!</p>
+      </div>
+      <div class="pd-card">
+        <h3>🐾 Pup-date for Max</h3>
+        <div class="photo">🐶</div>
+        <ul>
+          <li>🥣 Ate all his food</li>
+          <li>🎾 Played fetch for 20 minutes</li>
+          <li>🦮 Went on a walk around the block</li>
+          <li>😴 Took a cozy nap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <div class="title" style="text-align:left;margin-bottom:20px"><h2>Why We Started</h2></div>
+      <p>We love animals, and we know that many families need someone they can trust to care for their pets when they're at work or on vacation.</p>
+      <p>In <em>Lawn Boy</em> by Gary Paulsen, the main character turned a simple job into a real business by being hardworking and reliable. We want to do the same thing with something we're passionate about: making pets happy and giving owners peace of mind.</p>
+    </div>
+    <div class="owners">
+      <div class="owner"><div class="av" style="background:#f3e8ff">🐱</div><h3>Mónica</h3><span>Co-Owner</span></div>
+      <div class="owner"><div class="av" style="background:#fde7f1">🐶</div><h3>Ashley</h3><span>Co-Owner</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Ready for Pawsome Care?</h2>
+      <p>Send us a message to book a visit for your furry friend!</p>
+      <a class="btn" href="mailto:pawsomepetsitting@email.com">📧 pawsomepetsitting@email.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  🐾 Pawsome Pet Sitting · "Because your pet deserves pawsome care!" · Lawn Boy Business Project
+</footer>
+
+</body>
+</html>
